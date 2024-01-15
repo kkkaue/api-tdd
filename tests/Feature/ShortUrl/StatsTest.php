@@ -28,4 +28,27 @@ class StatsTest extends TestCase
             'created_at' => Carbon::now(),
         ]);
     }
+
+    /** @test */
+    public function it_should_return_the_amount_per_day_of_visits_with_a_total()
+    {
+        $shortUrl = ShortUrl::factory()->createOne();
+        $this->get($shortUrl->code);
+        $this->get($shortUrl->code);
+        $this->get($shortUrl->code);
+
+        $this->getJson(route('api.short-url.stats.visits', $shortUrl->code))
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJson([
+                'total' => 3,
+                'visits' => [
+                    [
+                        'date' => Carbon::now()->format('Y-m-d'),
+                        'amount' => 3,
+                    ],
+                ],
+            ]);
+
+        $this->assertDatabaseCount('visits', 3);
+    }
 }
