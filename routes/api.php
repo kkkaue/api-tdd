@@ -9,3 +9,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::post('/short-urls', [ShortUrlController::class, 'store'])->name('api.short-url.store');
+Route::delete('/short-urls/{code}', [ShortUrlController::class, 'destroy'])->name('api.short-url.destroy');

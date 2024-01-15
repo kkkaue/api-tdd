@@ -28,4 +28,13 @@ class ShortUrlController extends Controller
             'shortUrl' => $shortUrl->short_url,
         ], Response::HTTP_CREATED);
     }
+
+    public function destroy($code)
+    {
+        ShortUrl::query()
+            ->where('code', $code)
+            ->delete();
+
+        return response()->noContent();
+    }
 }

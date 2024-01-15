@@ -3,12 +3,12 @@
 - [x] Salvar um endpoint
   - [x] Precisar enviar o endpoint que queremos encurtar
   - [x] Endpoint tem que ser válido
-  - [ ] Não pode se repetir
+  - [x] Não pode se repetir
   - [x] Esperamos receber uma url encurtada pdl.test/YH21
   - [x] Esperamos receber um status code 201
-- [ ] Deletar a url curta baseado na url gerada
-  - [ ] url precisa existir
-  - [ ] receber um 204[No Content] caso deletado com sucesso
+- [x] Deletar a url curta baseado na url gerada
+  - [x] url precisa existir
+  - [x] receber um 204[No Content] caso deletado com sucesso
 - [ ] Pegar estatística de uso da url /stats/YH21
   - [ ] ultima vez que foi utilizada
 
