@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\ShortUrlController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+#region Short URL
 Route::post('/short-urls', [ShortUrlController::class, 'store'])->name('api.short-url.store');
 Route::delete('/short-urls/{code}', [ShortUrlController::class, 'destroy'])->name('api.short-url.destroy');
+#endregion
+
+#region Statistics
+Route::get('/short-urls/{code}/stats/last-visit', [StatsController::class, 'lastVisit'])->name('api.short-url.stats.last-visit');
+#endregion

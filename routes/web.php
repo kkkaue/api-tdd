@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ShortUrl;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return ['Laravel' => app()->version()];
+Route::get('{code}', function ($code) {
+    $shortUrl = ShortUrl::where('code', $code)->firstOrFail();
+
+    $shortUrl->visits()->create([
+        'ip_address' => request()->ip(),
+        'user_agent' => request()->userAgent(),
+    ]);
+    
+    return ['laravel' => app()->version()];
 });
 
 require __DIR__.'/auth.php';
