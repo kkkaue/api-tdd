@@ -18,7 +18,7 @@
 }
 ```
 
-  - [ ] receber quantas vezes a url foi utilizada
+  - [x] receber quantas vezes a url foi utilizada
 
 ```json
 {
