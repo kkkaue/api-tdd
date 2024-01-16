@@ -26,6 +26,7 @@ class ShortUrlController extends Controller
 
         return response()->json([
             'shortUrl' => $shortUrl->short_url,
+            'code' => $shortUrl->code,
         ], Response::HTTP_CREATED);
     }
 

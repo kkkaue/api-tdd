@@ -59,4 +59,15 @@ class CreateTest extends TestCase
 
     $this->assertDatabaseCount('short_urls', 1);
   }
+  /** @test */
+  public function it_should_generate_unique_codes()
+  {
+    $codes = [];
+
+    for ($i = 0; $i < 10000; $i++) {
+      $code = CodeGenerator::run();
+      $this->assertNotContains($code, $codes);
+      $codes[] = $code;
+    }
+  }
 }
