@@ -18,14 +18,13 @@ class StatsController extends Controller
     public function visits($code)
     {
         $shortUrl = ShortUrl::whereCode($code)->firstOrFail();
+        $visits = $shortUrl->visits()
+            ->selectRaw('DATE(created_at) as date, COUNT(*) as amount')
+            ->groupBy('date')
+            ->get();
         return [
             'total' => $shortUrl->visits()->count(),
-            'visits' => [
-                [
-                    'date' => Carbon::now()->format('Y-m-d'),
-                    'amount' => $shortUrl->visits()->count(),
-                ],
-            ]
+            'visits' => $visits
         ];
     }
 }
