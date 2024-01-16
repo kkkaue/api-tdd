@@ -9,7 +9,7 @@
 - [x] Deletar a url curta baseado na url gerada
   - [x] url precisa existir
   - [x] receber um 204[No Content] caso deletado com sucesso
-- [ ] Pegar estatística de uso da url /stats/YH21
+- [x] Pegar estatística de uso da url /stats/YH21
   - [x] ultima vez que foi utilizada
 
 ```json
