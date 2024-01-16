@@ -13,7 +13,7 @@ class CreateTest extends TestCase
   /** @test */
   public function it_should_be_able_to_create_a_short_url()
   {
-    
+
     $randomCode = Str::random(5);
 
     CodeGenerator::shouldReceive('run')
